@@ -49,3 +49,21 @@ function findProduct(elem) {
   const productId = Number(elem.closest('.js-card').dataset.id);
   return instruments.find(({ id }) => id === productId);
 }
+
+const REQUIRED_ELEMENTS = ['H', 'C', 'N', 'O', 'P', 'Ca'];
+
+function bestPlanet(solarSystem, maxSize) {
+  const planets = solarSystem.map(planet => {
+    return planet.split('_');
+  });
+  console.log(planets);
+  const filteredPlanets = planets.filter(planet =>
+    planet[0].includes(REQUIRED_ELEMENTS.join(', '))
+  );
+  console.log(filteredPlanets);
+}
+
+bestPlanet(
+  ['OHNCCaP_100', 'OHC_200', 'OCa_50', 'OHCCaP_400', 'OHNCCaP_225'],
+  250
+);
